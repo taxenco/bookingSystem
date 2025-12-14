@@ -1,0 +1,174 @@
+@model bookingSystem.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .stat-card { border: 0; box-shadow: 0 .25rem .75rem rgba(0,0,0,.06); }
+        .stat-number { font-weight: 700; letter-spacing: .2px; }
+        .soft-bg { background: linear-gradient(135deg, rgba(13,110,253,.10), rgba(25,135,84,.08)); }
+        .table thead th { white-space: nowrap; }
+    </style>
+}
+
+@functions {
+    private static string StatusBadgeClass(object? status)
+    {
+        var s = status?.ToString()?.ToLowerInvariant() ?? "";
+        return s switch
+        {
+            "pending" => "text-bg-warning",
+            "confirmed" => "text-bg-success",
+            "cancelled" or "canceled" => "text-bg-danger",
+            "approved" => "text-bg-success",
+            "rejected" => "text-bg-danger",
+            _ => "text-bg-secondary"
+        };
+    }
+}
+
+<div class="container py-4">
+    <div class="p-4 rounded-4 soft-bg border mb-4">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
+            <div>
+                <h1 class="h3 mb-1">Dashboard</h1>
+                <div class="text-muted">Overview of users, resources and bookings</div>
+            </div>
+            <span class="badge text-bg-dark px-3 py-2">
+                Updated @DateTime.Now.ToString("dd MMM yyyy HH:mm")
+            </span>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-lg">
+            <div class="card stat-card rounded-4">
+                <div class="card-body">
+                    <div class="text-muted small">Users</div>
+                    <div class="display-6 stat-number">@Model.TotalUsers</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg">
+            <div class="card stat-card rounded-4">
+                <div class="card-body">
+                    <div class="text-muted small">Total resources</div>
+                    <div class="display-6 stat-number">@Model.TotalResources</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg">
+            <div class="card stat-card rounded-4">
+                <div class="card-body">
+                    <div class="text-muted small">Active resources</div>
+                    <div class="display-6 stat-number">@Model.ActiveResources</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg">
+            <div class="card stat-card rounded-4">
+                <div class="card-body">
+                    <div class="text-muted small">Total bookings</div>
+                    <div class="display-6 stat-number">@Model.TotalBookings</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg">
+            <div class="card stat-card rounded-4">
+                <div class="card-body">
+                    <div class="text-muted small">Bookings today</div>
+                    <div class="display-6 stat-number">@Model.BookingsToday</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12 col-lg-4">
+            <div class="card stat-card rounded-4 h-100">
+                <div class="card-header bg-white border-0 pt-4 px-4">
+                    <h2 class="h5 mb-0">Bookings by status</h2>
+                    <div class="text-muted small">Distribution</div>
+                </div>
+
+                <div class="card-body px-4 pb-4">
+                    @if (Model.BookingsByStatus != null && Model.BookingsByStatus.Any())
+                    {
+                        <ul class="list-group list-group-flush">
+                            @foreach (var item in Model.BookingsByStatus)
+                            {
+                                <li class="list-group-item d-flex align-items-center justify-content-between px-0">
+                                    <span class="text-capitalize">@item.Key</span>
+                                    <span class="badge rounded-pill text-bg-primary">@item.Value</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="alert alert-light border mb-0">
+                            No status data yet.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-8">
+            <div class="card stat-card rounded-4">
+                <div class="card-header bg-white border-0 pt-4 px-4 d-flex align-items-center justify-content-between">
+                    <div>
+                        <h2 class="h5 mb-0">Latest bookings</h2>
+                        <div class="text-muted small">Most recent activity</div>
+                    </div>
+                </div>
+
+                <div class="card-body px-4 pb-4">
+                    @if (Model.LatestBookings != null && Model.LatestBookings.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Resource</th>
+                                        <th>Status</th>
+                                        <th>Start date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var b in Model.LatestBookings)
+                                    {
+                                        <tr>
+                                            <td class="fw-semibold">@b.UserId</td>
+                                            <td>@b.ResourceId</td>
+                                            <td>
+                                                <span class="badge @StatusBadgeClass(b.Status)">
+                                                    @b.Status
+                                                </span>
+                                            </td>
+                                            <td>@b.StartDate.ToString("dd MMM yyyy HH:mm")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-light border mb-0">
+                            No bookings yet.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bookingSystem.Data;
 
@@ -11,9 +12,11 @@ using bookingSystem.Data;
 namespace bookingSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251214132932_CreateResourceTable")]
+    partial class CreateResourceTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace bookingSystem.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("bookingSystem.Models.Resources", b =>
+            modelBuilder.Entity("bookingSystem.Models.Resource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +49,7 @@ namespace bookingSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Resources");
+                    b.ToTable("Resource");
                 });
 
             modelBuilder.Entity("bookingSystem.Models.User", b =>

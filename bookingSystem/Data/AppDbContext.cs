@@ -10,7 +10,8 @@ namespace bookingSystem.Data
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Users> Users { get; set; }
         public DbSet<Resources> Resources { get; set; }
+        public DbSet<Bookings> Bookings { get; set; }
     }
 }

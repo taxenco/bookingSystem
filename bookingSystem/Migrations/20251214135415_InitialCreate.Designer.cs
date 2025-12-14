@@ -12,8 +12,8 @@ using bookingSystem.Data;
 namespace bookingSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251214133336_CreateResourcesTable")]
-    partial class CreateResourcesTable
+    [Migration("20251214135415_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,38 @@ namespace bookingSystem.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+
+            modelBuilder.Entity("bookingSystem.Models.Bookings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("ResourceId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bookings");
+                });
 
             modelBuilder.Entity("bookingSystem.Models.Resources", b =>
                 {
@@ -52,7 +84,7 @@ namespace bookingSystem.Migrations
                     b.ToTable("Resources");
                 });
 
-            modelBuilder.Entity("bookingSystem.Models.User", b =>
+            modelBuilder.Entity("bookingSystem.Models.Users", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

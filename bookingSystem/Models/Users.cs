@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace bookingSystem.Models
 {
-    public class User
+    public class Users
     {
         public int Id { get; set; }
 

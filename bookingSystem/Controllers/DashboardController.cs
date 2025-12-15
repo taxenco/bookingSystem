@@ -1,39 +1,53 @@
 using bookingSystem.Data;
 using bookingSystem.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-public class DashboardController : Controller
+namespace bookingSystem.Controllers
 {
-    private readonly AppDbContext _context;
-
-    public DashboardController(AppDbContext context)
+    public class DashboardController : BaseController
     {
-        _context = context;
-    }
+        private readonly AppDbContext _context;
 
-    public IActionResult Index()
-    {
-        var today = DateTime.UtcNow.Date;
-
-        var vm = new DashboardViewModel
+        public DashboardController(AppDbContext context)
         {
-            TotalUsers = _context.Users.Count(),
-            TotalResources = _context.Resources.Count(),
-            ActiveResources = _context.Resources.Count(r => r.IsActive),
+            _context = context;
+        }
 
-            TotalBookings = _context.Bookings.Count(),
-            BookingsToday = _context.Bookings.Count(b => b.StartDate.Date == today),
+        public IActionResult Index()
+        {
+            var today = DateTime.UtcNow.Date;
+            var tomorrow = today.AddDays(1);
 
-            BookingsByStatus = _context.Bookings
-                .GroupBy(b => b.Status)
-                .ToDictionary(g => g.Key.ToString(), g => g.Count()),
+            var vm = new DashboardViewModel
+            {
+                TotalUsers = _context.Users.Count(),
 
-            LatestBookings = _context.Bookings
-                .OrderByDescending(b => b.CreatedAt)
-                .Take(5)
-                .ToList()
-        };
+                TotalResources = _context.Resources.Count(),
+                ActiveResources = _context.Resources.Count(r => r.IsActive),
 
-        return View(vm);
+                TotalBookings = _context.Bookings.Count(),
+
+                BookingsToday = _context.Bookings.Count(b =>
+                    b.StartDate >= today && b.StartDate < tomorrow
+                ),
+
+                BookingsByStatus = _context.Bookings
+                    .GroupBy(b => b.Status)
+                    .Select(g => new
+                    {
+                        Status = g.Key.ToString(),
+                        Count = g.Count()
+                    })
+                    .ToDictionary(x => x.Status, x => x.Count),
+
+                LatestBookings = _context.Bookings
+                    .OrderByDescending(b => b.CreatedAt)
+                    .Take(5)
+                    .ToList()
+            };
+
+            return View(vm);
+        }
     }
 }

@@ -1,0 +1,72 @@
+@model bookingSystem.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .stat-card { border: 0; box-shadow: 0 .25rem .75rem rgba(0,0,0,.06); }
+        .soft-bg { background: linear-gradient(135deg, rgba(13,110,253,.10), rgba(25,135,84,.08)); }
+        .form-control:focus { box-shadow: 0 0 0 .25rem rgba(13,110,253,.15); }
+    </style>
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5">
+            <div class="p-4 rounded-4 soft-bg border mb-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h1 class="h4 mb-1">Welcome back</h1>
+                        <div class="text-muted">Sign in to continue</div>
+                    </div>
+                    <span class="badge text-bg-dark px-3 py-2">
+                        @DateTime.Now.ToString("dd MMM yyyy HH:mm")
+                    </span>
+                </div>
+            </div>
+
+            <div class="card stat-card rounded-4">
+                <div class="card-body p-4">
+                    <form method="post" novalidate>
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input asp-for="Email" class="form-control" placeholder="you@email.com" autocomplete="email" />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Password</label>
+                            <input asp-for="Password" class="form-control" type="password" placeholder="••••••••" autocomplete="current-password" />
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger py-2 mb-3">
+                                Invalid email or password.
+                            </div>
+                        }
+
+                        <button type="submit" class="btn btn-primary w-100 py-2 rounded-3">
+                            Login
+                        </button>
+
+                        <div class="text-center text-muted small mt-3">
+                            Tip: use a strong password (8+ chars).
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

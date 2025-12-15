@@ -16,7 +16,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // MVC
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSession();
+
 var app = builder.Build();
+
+app.UseSession();
 
 // Pipeline
 if (!app.Environment.IsDevelopment())

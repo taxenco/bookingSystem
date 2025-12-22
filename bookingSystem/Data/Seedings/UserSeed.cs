@@ -1,5 +1,6 @@
 using bookingSystem.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace bookingSystem.Data.Seedings
 {
@@ -8,20 +9,33 @@ namespace bookingSystem.Data.Seedings
         public static void Seed(ModelBuilder modelBuilder)
         {
             var users = new List<Users>();
-            var random = new Random(42); // seed fija para EF
+            var random = new Random(42);
+            var hasher = new PasswordHasher<Users>();
 
             for (int i = 1; i <= 10; i++)
             {
-                var isAdmin = random.Next(0, 5) == 0; // ~20% admins
+                var role = random.Next(0, 5) == 0 ? "admin" : "user";
 
-                users.Add(new Users
+                var user = new Users
                 {
                     Id = i,
                     Email = $"user{i}@booking.com",
-                    PasswordHash = $"hashed_password_{i}",
-                    Role = isAdmin ? "admin" : "user",
-                    CreatedAt = DateTime.UtcNow
-                });
+                    Role = role,
+                    CreatedAt = DateTime.UtcNow,
+                    PasswordHash = "" 
+                };
+
+            
+                user = new Users
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    Role = user.Role,
+                    CreatedAt = user.CreatedAt,
+                    PasswordHash = hasher.HashPassword(user, "123456")
+                };
+
+                users.Add(user);
             }
 
             modelBuilder.Entity<Users>().HasData(users);

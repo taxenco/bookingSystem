@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// =========================
 // DB
+// =========================
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -14,12 +16,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
+// =========================
 // MVC
+// =========================
 builder.Services.AddControllersWithViews();
 
+// =========================
+// AUTH
+// =========================
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
+        options.Cookie.Name = "BookingSystem.Auth";
         options.LoginPath = "/Auth/Login";
         options.AccessDeniedPath = "/Auth/Login";
         options.ExpireTimeSpan = TimeSpan.FromHours(8);
@@ -28,13 +36,21 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddSession();
+// =========================
+// SESSION 
+// =========================
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromHours(8);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
-app.UseSession();
-
-// Pipeline
+// =========================
+// PIPELINE
+// =========================
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -42,10 +58,12 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();  
+app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();          
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

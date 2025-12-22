@@ -12,8 +12,8 @@ using bookingSystem.Data;
 namespace bookingSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251214195820_SeedInitialData")]
-    partial class SeedInitialData
+    [Migration("20251222121540_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,100 +60,100 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(180),
-                            EndDate = new DateTime(2025, 12, 27, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(6544),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6209),
+                            EndDate = new DateTime(2026, 1, 4, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(2903),
                             ResourceId = 9,
-                            StartDate = new DateTime(2025, 12, 23, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(6544),
+                            StartDate = new DateTime(2025, 12, 31, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(2903),
                             Status = "Completed",
                             UserId = 8
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(600),
-                            EndDate = new DateTime(2025, 12, 5, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(590),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6639),
+                            EndDate = new DateTime(2025, 12, 13, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6628),
                             ResourceId = 2,
-                            StartDate = new DateTime(2025, 12, 4, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(590),
+                            StartDate = new DateTime(2025, 12, 12, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6628),
                             Status = "InProgress",
                             UserId = 2
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(603),
-                            EndDate = new DateTime(2025, 12, 24, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(601),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6658),
+                            EndDate = new DateTime(2026, 1, 1, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6639),
                             ResourceId = 5,
-                            StartDate = new DateTime(2025, 12, 22, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(601),
+                            StartDate = new DateTime(2025, 12, 30, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6639),
                             Status = "Requested",
                             UserId = 2
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(605),
-                            EndDate = new DateTime(2025, 12, 23, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(603),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6665),
+                            EndDate = new DateTime(2025, 12, 31, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6659),
                             ResourceId = 1,
-                            StartDate = new DateTime(2025, 12, 20, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(603),
+                            StartDate = new DateTime(2025, 12, 28, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6659),
                             Status = "Expired",
                             UserId = 3
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(607),
-                            EndDate = new DateTime(2025, 12, 8, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(605),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6667),
+                            EndDate = new DateTime(2025, 12, 16, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6665),
                             ResourceId = 1,
-                            StartDate = new DateTime(2025, 12, 7, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(605),
+                            StartDate = new DateTime(2025, 12, 15, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6665),
                             Status = "Completed",
                             UserId = 8
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(613),
-                            EndDate = new DateTime(2025, 12, 19, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(612),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6673),
+                            EndDate = new DateTime(2025, 12, 27, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6672),
                             ResourceId = 6,
-                            StartDate = new DateTime(2025, 12, 16, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(612),
+                            StartDate = new DateTime(2025, 12, 24, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6672),
                             Status = "Confirmed",
                             UserId = 9
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(615),
-                            EndDate = new DateTime(2025, 12, 19, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(614),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6675),
+                            EndDate = new DateTime(2025, 12, 27, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6674),
                             ResourceId = 1,
-                            StartDate = new DateTime(2025, 12, 15, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(614),
+                            StartDate = new DateTime(2025, 12, 23, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6674),
                             Status = "InProgress",
                             UserId = 8
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(618),
-                            EndDate = new DateTime(2025, 12, 9, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(616),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6677),
+                            EndDate = new DateTime(2025, 12, 17, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6676),
                             ResourceId = 5,
-                            StartDate = new DateTime(2025, 12, 5, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(616),
+                            StartDate = new DateTime(2025, 12, 13, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6676),
                             Status = "NoShow",
                             UserId = 3
                         },
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(620),
-                            EndDate = new DateTime(2025, 12, 26, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(618),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6680),
+                            EndDate = new DateTime(2026, 1, 3, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6678),
                             ResourceId = 2,
-                            StartDate = new DateTime(2025, 12, 22, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(618),
+                            StartDate = new DateTime(2025, 12, 30, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6678),
                             Status = "Completed",
                             UserId = 5
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(623),
-                            EndDate = new DateTime(2025, 12, 7, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(621),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6683),
+                            EndDate = new DateTime(2025, 12, 15, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6681),
                             ResourceId = 2,
-                            StartDate = new DateTime(2025, 12, 6, 19, 58, 19, 642, DateTimeKind.Utc).AddTicks(621),
+                            StartDate = new DateTime(2025, 12, 14, 12, 15, 40, 265, DateTimeKind.Utc).AddTicks(6681),
                             Status = "Rescheduled",
                             UserId = 4
                         });
@@ -189,7 +189,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1362),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8118),
                             Description = "Auto generated resource number 1",
                             IsActive = true,
                             Name = "Resource 1"
@@ -197,7 +197,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1812),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8550),
                             Description = "Auto generated resource number 2",
                             IsActive = true,
                             Name = "Resource 2"
@@ -205,7 +205,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1815),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8554),
                             Description = "Auto generated resource number 3",
                             IsActive = true,
                             Name = "Resource 3"
@@ -213,7 +213,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1818),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8572),
                             Description = "Auto generated resource number 4",
                             IsActive = true,
                             Name = "Resource 4"
@@ -221,7 +221,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1821),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8581),
                             Description = "Auto generated resource number 5",
                             IsActive = true,
                             Name = "Resource 5"
@@ -229,7 +229,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1827),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8599),
                             Description = "Auto generated resource number 6",
                             IsActive = false,
                             Name = "Resource 6"
@@ -237,7 +237,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1829),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8603),
                             Description = "Auto generated resource number 7",
                             IsActive = true,
                             Name = "Resource 7"
@@ -245,7 +245,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1831),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8614),
                             Description = "Auto generated resource number 8",
                             IsActive = false,
                             Name = "Resource 8"
@@ -253,7 +253,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1833),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8618),
                             Description = "Auto generated resource number 9",
                             IsActive = false,
                             Name = "Resource 9"
@@ -261,7 +261,7 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 641, DateTimeKind.Utc).AddTicks(1841),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 264, DateTimeKind.Utc).AddTicks(8650),
                             Description = "Auto generated resource number 10",
                             IsActive = true,
                             Name = "Resource 10"
@@ -299,81 +299,81 @@ namespace bookingSystem.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(1391),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 39, 442, DateTimeKind.Utc).AddTicks(9531),
                             Email = "user1@booking.com",
-                            PasswordHash = "hashed_password_1",
+                            PasswordHash = "AQAAAAIAAYagAAAAENkfb1HDWL4C8lYUyJZpHJ4mpEag+mlaa7jI6mJCsutH507MTRB/8B2FkYkkHJtkvQ==",
                             Role = "user"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(2060),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 39, 530, DateTimeKind.Utc).AddTicks(628),
                             Email = "user2@booking.com",
-                            PasswordHash = "hashed_password_2",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPOb0j0yYH0SXSw86ecUH64oAXcXXfireqtFl3voHJLivqlXnWAyDVfRvRQlYyiyNw==",
                             Role = "admin"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(2064),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 39, 617, DateTimeKind.Utc).AddTicks(1830),
                             Email = "user3@booking.com",
-                            PasswordHash = "hashed_password_3",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPeRwZ0EWYbPUSWvVg+QOU+CrauO6uymBmvfO7vtKOsIx/5Tz/FSQer8i9NMh10k6A==",
                             Role = "admin"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(2068),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 39, 699, DateTimeKind.Utc).AddTicks(5867),
                             Email = "user4@booking.com",
-                            PasswordHash = "hashed_password_4",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEWljLj5CZg9q3YC2AqUKq0JpRJ23PfqXh+i+BQIn9ljXfiVXSQLCLX3WMLXxXQJew==",
                             Role = "user"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(2070),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 39, 775, DateTimeKind.Utc).AddTicks(6910),
                             Email = "user5@booking.com",
-                            PasswordHash = "hashed_password_5",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAn2D0pBpNGX/akXwVoPHRHhhHhGloty1Gk/JAtVBr2WEnQARa+jx3yc+oHGpEKDJQ==",
                             Role = "admin"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(2083),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 39, 857, DateTimeKind.Utc).AddTicks(2115),
                             Email = "user6@booking.com",
-                            PasswordHash = "hashed_password_6",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC2zm8/1ZIV+IVh/9MhnF0lYBzrL06HXRWb2GsSzEGvzQZKnfV889f0BtUwLDIRFew==",
                             Role = "user"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(2086),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 39, 942, DateTimeKind.Utc).AddTicks(3376),
                             Email = "user7@booking.com",
-                            PasswordHash = "hashed_password_7",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAEwIa8aN8wTVdzq2myAf8k51T5/O69+P7hISlIiOeA+HPUW9wxZqFsenRNlvJE7Tw==",
                             Role = "user"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(2088),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 25, DateTimeKind.Utc).AddTicks(6666),
                             Email = "user8@booking.com",
-                            PasswordHash = "hashed_password_8",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIqzfuwkItD7EKeKleJDmRed8zkqL6fPihmqaw97Vc+lJl6DIefwPu3tT/H1DAJtIQ==",
                             Role = "user"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(2091),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 105, DateTimeKind.Utc).AddTicks(5869),
                             Email = "user9@booking.com",
-                            PasswordHash = "hashed_password_9",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJYp6k3+vZlLQKjSW61HSj/PL+PYV4RGQc3uxR8bTFj2gqYotlJczsQ8xHB7Ag2NRw==",
                             Role = "admin"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2025, 12, 14, 19, 58, 19, 638, DateTimeKind.Utc).AddTicks(2099),
+                            CreatedAt = new DateTime(2025, 12, 22, 12, 15, 40, 187, DateTimeKind.Utc).AddTicks(3017),
                             Email = "user10@booking.com",
-                            PasswordHash = "hashed_password_10",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDv/SCFgPxOWITt0lyqf8kYEWfYsZdN+xa2UWl30+Wc6XEh2aAalUeRUkf08l/jPxw==",
                             Role = "user"
                         });
                 });

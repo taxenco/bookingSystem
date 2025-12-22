@@ -30,18 +30,18 @@
 
             <div class="card stat-card rounded-4">
                 <div class="card-body p-4">
-                    <form method="post" novalidate>
+                    <form method="post" asp-controller="Auth" asp-action="Login" novalidate>
                         @Html.AntiForgeryToken()
 
                         <div class="mb-3">
                             <label asp-for="Email" class="form-label">Email</label>
-                            <input asp-for="Email" class="form-control" placeholder="you@email.com" autocomplete="email" />
+                            <input asp-for="Email" class="form-control" placeholder="email" autocomplete="email" value='user2@booking.com' />
                             <span asp-validation-for="Email" class="text-danger small"></span>
                         </div>
 
                         <div class="mb-3">
                             <label asp-for="Password" class="form-label">Password</label>
-                            <input asp-for="Password" class="form-control" type="password" placeholder="••••••••" autocomplete="current-password" />
+                            <input asp-for="Password" class="form-control" type="password" placeholder="••••••••" autocomplete="current-password" value='123456' />
                             <span asp-validation-for="Password" class="text-danger small"></span>
                         </div>
 

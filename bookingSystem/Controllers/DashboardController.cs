@@ -6,6 +6,8 @@ using bookingSystem.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+
 
 namespace bookingSystem.Controllers
 {
@@ -55,6 +57,27 @@ namespace bookingSystem.Controllers
             // UTC date boundaries for "today"
             var today = DateTime.UtcNow.Date;
             var tomorrow = today.AddDays(1);
+
+                // -----------------------------
+                // GET LOGGED-IN USER FROM SESSION
+                // -----------------------------
+                var userId = HttpContext.Session.GetInt32("UserId");
+
+                if (userId != null)
+                {
+                    var user = await _context.Users
+                        .Where(u => u.Id == userId)
+                        .Select(u => new { u.Email, u.Role })
+                        .FirstOrDefaultAsync();
+
+                    ViewBag.Email = user?.Email ?? "User";
+                    ViewBag.IsAdmin = user?.Role == "admin";
+                }
+                else
+                {
+                    ViewBag.Email = "User";
+                    ViewBag.IsAdmin = false;
+                }
 
             // Assemble dashboard metrics
             var vm = new DashboardViewModel

@@ -9,6 +9,8 @@ using System.Security.Claims;
 using bookingSystem.ViewModels;
 using bookingSystem.Data;
 using bookingSystem.Models;
+using Microsoft.AspNetCore.Http;
+
 
 namespace bookingSystem.Controllers
 {
@@ -68,6 +70,8 @@ namespace bookingSystem.Controllers
                 ModelState.AddModelError("", "Invalid email or password.");
                 return View(model);
             }
+
+            HttpContext.Session.SetInt32("UserId", user.Id);
 
             // =========================
             // SIGN IN (COOKIE AUTH)

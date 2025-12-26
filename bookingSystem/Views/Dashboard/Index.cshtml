@@ -33,10 +33,22 @@
 <div class="container py-4">
     <div class="p-4 rounded-4 soft-bg border mb-4">
         <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
-            <div>
-                <h1 class="h3 mb-1">Dashboard</h1>
-                <div class="text-muted">Overview of users, resources and bookings</div>
+        <div>
+            <h1 class="h3 mb-1">Dashboard</h1>
+
+            <div class="text-muted">
+                Welcome,
+                @if (ViewBag.IsAdmin == true)
+                {
+                    <strong>Admin (@ViewBag.Email)</strong>
+                    <span class="badge text-bg-danger ms-2">Admin</span>
+                }
+                else
+                {
+                    <strong>@ViewBag.Email</strong>
+                }
             </div>
+        </div>
             <span class="badge text-bg-dark px-3 py-2">
                 Updated @DateTime.Now.ToString("dd MMM yyyy HH:mm")
             </span>

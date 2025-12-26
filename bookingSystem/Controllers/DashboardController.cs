@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 
 namespace bookingSystem.Controllers
@@ -54,53 +55,37 @@ namespace bookingSystem.Controllers
         // -----------------------------------------------------------------
         public async Task<IActionResult> Index()
         {
-            // UTC date boundaries for "today"
+            var isAdmin = User.IsInRole("admin");
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
+            ViewBag.Email = User.FindFirstValue(ClaimTypes.Email);
+            ViewBag.IsAdmin = isAdmin;
+
             var today = DateTime.UtcNow.Date;
             var tomorrow = today.AddDays(1);
 
-                // -----------------------------
-                // GET LOGGED-IN USER FROM SESSION
-                // -----------------------------
-                var userId = HttpContext.Session.GetInt32("UserId");
+            var bookingsQuery = _context.Bookings.AsQueryable();
 
-                if (userId != null)
-                {
-                    var user = await _context.Users
-                        .Where(u => u.Id == userId)
-                        .Select(u => new { u.Email, u.Role })
-                        .FirstOrDefaultAsync();
+            // 🔐 Usuario normal: solo sus bookings
+            if (!isAdmin)
+            {
+                bookingsQuery = bookingsQuery.Where(b => b.UserId == userId);
+            }
 
-                    ViewBag.Email = user?.Email ?? "User";
-                    ViewBag.IsAdmin = user?.Role == "admin";
-                }
-                else
-                {
-                    ViewBag.Email = "User";
-                    ViewBag.IsAdmin = false;
-                }
-
-            // Assemble dashboard metrics
             var vm = new DashboardViewModel
             {
-                // Total registered users
-                TotalUsers = await _context.Users.CountAsync(),
+                // SOLO admin ve métricas globales
+                TotalUsers = isAdmin ? await _context.Users.CountAsync() : 0,
+                TotalResources = isAdmin ? await _context.Resources.CountAsync() : 0,
+                ActiveResources = isAdmin ? await _context.Resources.CountAsync(r => r.IsActive) : 0,
 
-                // Total resources in the system
-                TotalResources = await _context.Resources.CountAsync(),
+                TotalBookings = await bookingsQuery.CountAsync(),
 
-                // Resources currently marked as active
-                ActiveResources = await _context.Resources.CountAsync(r => r.IsActive),
-
-                // Total number of bookings
-                TotalBookings = await _context.Bookings.CountAsync(),
-
-                // Bookings starting today (UTC)
-                BookingsToday = await _context.Bookings.CountAsync(b =>
+                BookingsToday = await bookingsQuery.CountAsync(b =>
                     b.StartDate >= today && b.StartDate < tomorrow
                 ),
 
-                // Booking count grouped by status
-                BookingsByStatus = await _context.Bookings
+                BookingsByStatus = await bookingsQuery
                     .GroupBy(b => b.Status)
                     .Select(g => new
                     {
@@ -109,14 +94,12 @@ namespace bookingSystem.Controllers
                     })
                     .ToDictionaryAsync(x => x.Status, x => x.Count),
 
-                // Most recent bookings ordered by creation date
-                LatestBookings = await _context.Bookings
+                LatestBookings = await bookingsQuery
                     .OrderByDescending(b => b.CreatedAt)
                     .Take(5)
                     .ToListAsync()
             };
 
-            // Render dashboard view
             return View(vm);
         }
     }

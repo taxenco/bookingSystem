@@ -54,53 +54,58 @@
             </span>
         </div>
     </div>
+    
+    @if (ViewBag.IsAdmin == true)
+    {
+        <div class="row g-3 mb-4">
 
-    <div class="row g-3 mb-4">
-        <div class="col-12 col-sm-6 col-lg">
-            <div class="card stat-card rounded-4">
-                <div class="card-body">
-                    <div class="text-muted small">Users</div>
-                    <div class="display-6 stat-number">@Model.TotalUsers</div>
+            <div class="col-12 col-sm-6 col-lg">
+                <div class="card stat-card rounded-4">
+                    <div class="card-body">
+                        <div class="text-muted small">Users</div>
+                        <div class="display-6 stat-number">@Model.TotalUsers</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12 col-sm-6 col-lg">
-            <div class="card stat-card rounded-4">
-                <div class="card-body">
-                    <div class="text-muted small">Total resources</div>
-                    <div class="display-6 stat-number">@Model.TotalResources</div>
+            <div class="col-12 col-sm-6 col-lg">
+                <div class="card stat-card rounded-4">
+                    <div class="card-body">
+                        <div class="text-muted small">Total resources</div>
+                        <div class="display-6 stat-number">@Model.TotalResources</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12 col-sm-6 col-lg">
-            <div class="card stat-card rounded-4">
-                <div class="card-body">
-                    <div class="text-muted small">Active resources</div>
-                    <div class="display-6 stat-number">@Model.ActiveResources</div>
+            <div class="col-12 col-sm-6 col-lg">
+                <div class="card stat-card rounded-4">
+                    <div class="card-body">
+                        <div class="text-muted small">Active resources</div>
+                        <div class="display-6 stat-number">@Model.ActiveResources</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12 col-sm-6 col-lg">
-            <div class="card stat-card rounded-4">
-                <div class="card-body">
-                    <div class="text-muted small">Total bookings</div>
-                    <div class="display-6 stat-number">@Model.TotalBookings</div>
+            <div class="col-12 col-sm-6 col-lg">
+                <div class="card stat-card rounded-4">
+                    <div class="card-body">
+                        <div class="text-muted small">Total bookings</div>
+                        <div class="display-6 stat-number">@Model.TotalBookings</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12 col-sm-6 col-lg">
-            <div class="card stat-card rounded-4">
-                <div class="card-body">
-                    <div class="text-muted small">Bookings today</div>
-                    <div class="display-6 stat-number">@Model.BookingsToday</div>
+            <div class="col-12 col-sm-6 col-lg">
+                <div class="card stat-card rounded-4">
+                    <div class="card-body">
+                        <div class="text-muted small">Bookings today</div>
+                        <div class="display-6 stat-number">@Model.BookingsToday</div>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </div>
+    }
 
     <div class="row g-3">
         <div class="col-12 col-lg-4">

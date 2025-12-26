@@ -86,7 +86,8 @@ namespace bookingSystem.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role)
+                new Claim(ClaimTypes.Role, user.Role.Trim().ToLowerInvariant())
+
             };
 
             var identity = new ClaimsIdentity(

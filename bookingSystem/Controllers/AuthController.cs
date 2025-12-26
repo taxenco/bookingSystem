@@ -32,6 +32,12 @@ namespace bookingSystem.Controllers
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
         {
+            // 🔒 OPTION 1: block access if already logged in
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+
             ViewData["ReturnUrl"] = returnUrl;
             return View(new LoginViewModel());
         }

@@ -15,7 +15,7 @@ namespace bookingSystem.Controllers
     // by the authentication middleware.
     // ---------------------------------------------------------------------
     [Authorize]
-    public class HomeController : BaseController
+    public class HomeController : Controller   
     {
         // -----------------------------------------------------------------
         // Index

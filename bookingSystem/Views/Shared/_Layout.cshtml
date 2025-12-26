@@ -18,7 +18,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">bookingSystem</a>
+                <a class="navbar-brand" asp-controller="Dashboard" asp-action="Index">bookingSystem</a>
 
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
@@ -32,6 +32,11 @@
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    <form asp-controller="Auth" asp-action="Logout" method="post" class="d-flex"> @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-outline-danger btn-sm">
+                            Logout
+                        </button>
+                    </form>
                 </div>
             </div>
         </nav>

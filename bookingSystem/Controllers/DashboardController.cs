@@ -19,7 +19,7 @@ namespace bookingSystem.Controllers
     // Access is restricted to authenticated users.
     // ---------------------------------------------------------------------
     [Authorize]
-    public class DashboardController : BaseController
+    public class DashboardController : Controller   
     {
         // Entity Framework database context.
         // Used exclusively for read operations in this controller.
